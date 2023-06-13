@@ -7,20 +7,58 @@ import ReactDOM from "react-dom/client";
       <h2>i'm h2 tag</h2>
    </div>
 </div>
-*/
 
-// const heading= React.createElement("h1",
-// {id: "heading",abc: "xyz"},
-// "Hello world  from React!!");
-  const parent= React.createElement("div",
-  {id: "parent"},
+ const heading= React.createElement("h1",
+ {id: "heading",abc: "xyz"},
+ "Hello world  from React!!");
+   const parent= React.createElement("div",
+   {id: "parent"},
   React.createElement("div",
-  {id: "child"},
-     [React.createElement("h1",{id: "heading"},"im h1 tag"),React.createElement("h2",{},"i'm h3 tag")]
+   {id: "child"},
+      [React.createElement("h1",{id: "heading"},"im h1 tag"),React.createElement("h2",{},"i'm h3 tag")]
    ) 
-  );
+   );
 
     const root= ReactDOM.createRoot(document.getElementById("root"));
-    //console.log(heading);
-    //root.render(heading);
-    root.render(parent);
+    console.log(heading);
+    root.render(heading);
+     root.render(parent);
+   */
+
+//React element => Object => HTMLElement(render)
+
+//const heading = React.createElement("h1",{id:"heading"},"Namaste React");
+//console.log(heading);
+//JSX
+const heading= (<h1  className="head">
+   Namaste React Using JSX
+   </h1>);
+
+//React Component
+//Class Based COmponent- OLD
+//Functional Component- NEW
+
+const Title =() => (
+   <h1 className="head" tabIndex="5">
+      Namaste React using JSX
+   </h1>
+);
+const number= 10;
+const HeadingComponent= ()=>(
+   <div id="container">
+      <Title />
+      //<Title></Title>
+     //{Title()} we can call as well
+      {number}
+     <h1>Namaste React Functional Component</h1>
+   </div>);
+   
+// const HeadingComponent2= ()=> (<h1 className="heading">
+//    Namaste React Functional Component</h1>);
+
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+//render react element
+//root.render(heading);
+//render component
+root.render(<HeadingComponent />)
