@@ -1,64 +1,93 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+
+
 /*
-<div id="parent">
-   <div id="child">
-      <h1>I'm h1 tag</h1>
-      <h2>i'm h2 tag</h2>
-   </div>
-</div>
+ -Header
+    -Logo
+    -Nav-Items
+ -Body
+    -Search
+    -Restaurant Container
+      -Restaurant Card
+        - Image, Name, Rating, Cuisine,ETA etc.
+ -Footer
+    -Copyright
+    -links
+    -Address
+    -Contact
+*/
 
- const heading= React.createElement("h1",
- {id: "heading",abc: "xyz"},
- "Hello world  from React!!");
-   const parent= React.createElement("div",
-   {id: "parent"},
-  React.createElement("div",
-   {id: "child"},
-      [React.createElement("h1",{id: "heading"},"im h1 tag"),React.createElement("h2",{},"i'm h3 tag")]
-   ) 
-   );
+const ResCard =(props) => {
+   const {resName,cuisine, rating, eta} =props;
 
-    const root= ReactDOM.createRoot(document.getElementById("root"));
-    console.log(heading);
-    root.render(heading);
-     root.render(parent);
-   */
+   return (
+      <div className="res-card">
+         <img
+           className="res-logo"
+           alt="res-logo" 
+           src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/e0vvulfbahjxjz6k4uwi" />
+         <h3>{props.resName}</h3>
+         <h4>{props.cuisine}</h4>
+         <h4>{rating}</h4>
+         <h4>{eta}</h4>
+      </div>
+   )
+}
 
-//React element => Object => HTMLElement(render)
+const Body =() => {
+   return (
+      <div className="body">
+         <div className="search">Search</div>
+         <div className="res-container">
+             <ResCard 
+                resName="Meghna Foods" 
+                cuisine="Biryani, Andhra, South Indian"
+                rating="4.4*"
+                eta="38 minutes"
+                />
+             <ResCard 
+                resName="KFC" 
+                cuisine="Burger, FastFood"
+                rating="4.1*"
+                eta="35 minutes"
+                />
 
-//const heading = React.createElement("h1",{id:"heading"},"Namaste React");
-//console.log(heading);
-//JSX
-const heading= (<h1  className="head">
-   Namaste React Using JSX
-   </h1>);
+         </div>
+      </div>
+   )
+}
 
-//React Component
-//Class Based COmponent- OLD
-//Functional Component- NEW
+const Header =() =>{
+   return(
+      <div className="header">
+         <div className="logo-container">
+            <img className="logo" src="https://s3u.tmimgcdn.com/800x0/u2303654/b244617e9ebe04335271ad9c556afc72.jpg"
+             alt="food-order" />
+         </div>
+         <div className="nav-items">
+            <ul>
+               <li>Home</li>
+               <li>About Us</li>
+               <li>Contact</li>
+               <li>Cart</li>
+            </ul>
+         </div>
+      </div>
+   )
+}
 
-const Title =() => (
-   <h1 className="head" tabIndex="5">
-      Namaste React using JSX
-   </h1>
-);
-const number= 10;
-const HeadingComponent= ()=>(
-   <div id="container">
-      <Title />
-      //<Title></Title>
-     //{Title()} we can call as well
-      {number}
-     <h1>Namaste React Functional Component</h1>
-   </div>);
-   
-// const HeadingComponent2= ()=> (<h1 className="heading">
-//    Namaste React Functional Component</h1>);
+const AppLayout= () => {
+   return (
+      <div className="app">
+      <Header />
+      <Body />
+      {/* <AppFooter /> */}
+      </div>
+   )
+}
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-//render react element
-//root.render(heading);
-//render component
-root.render(<HeadingComponent />)
+
+root.render(<AppLayout />);
