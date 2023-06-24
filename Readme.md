@@ -17,3 +17,19 @@
 -Https
 -Tree Shaking (Remove unused code)
 -Different dev and prod bundles
+
+
+#--------
+ -Header
+    -Logo
+    -Nav-Items
+ -Body
+    -Search
+    -Restaurant Container
+      -Restaurant Card
+        - Image, Name, Rating, Cuisine,ETA etc.
+ -Footer
+    -Copyright
+    -links
+    -Address
+    -Contact
