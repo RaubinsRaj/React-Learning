@@ -4,12 +4,14 @@ import ResCard from "./ResCard";
 import resList from "../utils/mockData";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   //const [resList1, setResList1] = useState(resList);
   const [resList1, setResList1] = useState([]);
   const [filterRestaurant, setFilterRestaurant] = useState([]);
   const [searchText,setSearchText] = useState("");
+  
 
 //   useEffect(() => {
 //     console.log("Use effect Called");
@@ -33,7 +35,9 @@ const Body = () => {
 //  if(resList1.length===0){
 //    return <Shimmer />
 //  }
-
+   const onlineStatus=useOnlineStatus();
+   console.log(onlineStatus);
+   if(onlineStatus===false) return <h1>Looks Like you're Offline!!! Pls check your internet Connection!!</h1>
   return resList1.length===0 ? (<Shimmer /> ) :  (
     <div className="body">
       <div className="filter">
